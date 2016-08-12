@@ -172,7 +172,7 @@ function show_results (msg){
 		}
 	}
 	$('#results').append('<input type="checkbox" id="toggle_xrefs" name="toggle_xrefs">');
-	$('#results').append('<label for="toggle_xrefs">(toggle external references)</label>');
+	$('#results').append('<label for="toggle_xrefs">toggle external references</label>');
 	$('#offset').change(function(){do_search()});
 	$('#toggle_xrefs').click(function(){$('.lbs_xrefs').toggleClass("hidden")});
 	$.each(msg.results, function(index, item) {
@@ -260,7 +260,7 @@ function show_results (msg){
 			var region_url = url + '/Location/View?db=core;r=' + item.seq_region.name
 			if (item.seq_region.coords){
 	    	    region_url += ':' + item.seq_region.coords[0] + '-' + item.seq_region.coords[1];
-	    	    location.href=region_url;
+	    	    if (msg.count == 1) location.href=region_url;
 	    	}
 			else {
 				region_url += ':1-' + item.seq_region.length;
@@ -275,6 +275,12 @@ function show_results (msg){
 					$('#result_'+index).append(' ' + syn_item);
 				});
 			}
+		}
+    if (item.species){
+			var url = item.species.production_name;
+			var header = '<div class="lbs_species">' + item.species.production_name + '</div> <span class="lbs_large"><a href="' + url + '"> ' + item.species.production_name + '</a></span>';
+			$('#result_'+index).append('<div class="lbs_result_header">' + header + '</div>');
+			if (msg.count == 1) location.href=url;
 		}
 	});
 

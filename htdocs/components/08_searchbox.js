@@ -183,6 +183,7 @@ function show_results (msg){
 			var gene_url = url + '/Gene/Summary?db=core;g=' + item.gene.stable_id;
 			var header = '<div class="lbs_species">' + item.gene.production_name + '</div> <span class="lbs_large"><a href="' + gene_url + '"> ' + item.gene.stable_id + '</a></span>';
 			if (item.gene.description){
+				if (item.gene.description.length > 70) item.gene.description = item.gene.description.substring(0,67)+'&hellip;';
 				header += ' - <span>' + item.gene.description + '</span>';
 			}
 			$('#result_'+index).append('<div class="lbs_result_header">' + header + '</div>');

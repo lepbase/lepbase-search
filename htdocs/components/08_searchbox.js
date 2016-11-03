@@ -49,7 +49,10 @@ $(function(){
     if (window.location.pathname.match('search.html')){
     	if (!$("#term").val()){
     		var term = GetQueryStringParams('q');
-    		if (term) $("#term").val(decodeURIComponent(term));
+    		if (term){
+          $("#term").val(decodeURIComponent(term));
+          do_search();
+        }
     	}
     }
 

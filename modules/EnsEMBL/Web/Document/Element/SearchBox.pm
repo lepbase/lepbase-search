@@ -85,10 +85,10 @@ sub content {
             <label class="hidden" for="se_q">Search terms</label>
             <input class="query inactive" id="se_q" type="text" name="q" value="$options_hash{$search_code}{'label'}&hellip;" data-role="none" />
             <input type="hidden" id="search_table" name="table" value ="$search_table" />
-            <input type="hidden" id="search_db_name" name="table" value ="$search_db_name" />
-            <input type="hidden" id="search_db_host" name="table" value ="$search_db_host" />
-            <input type="hidden" id="search_db_port" name="table" value ="$search_db_port" />
-            <input type="hidden" id="search_db_user" name="table" value ="$search_db_user" />
+            <input type="hidden" id="search_db_name" name="search_db_name" value ="$search_db_name" />
+            <input type="hidden" id="search_db_host" name="search_db_host" value ="$search_db_host" />
+            <input type="hidden" id="search_db_port" name="search_db_port" value ="$search_db_port" />
+            <input type="hidden" id="search_db_user" name="search_db_user" value ="$search_db_user" />
           </div>
           <!--div class="button"><input type="image" src="${img_url}16/search.png" alt="Search&nbsp;&raquo;" /></div-->
         </div>

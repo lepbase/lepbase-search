@@ -36,7 +36,7 @@ $(function(){
     $(function() {
           $("#se_q").autocomplete({
                 source: function(request, response) {
-    				$.getJSON(prefix+"autocomplete", { term: request.term, table: $('#search_table').val() },
+    				$.getJSON(prefix+"autocomplete", { term: request.term, table: $('#search_table').val(), search_db_name: $('#search_db_name').val(), search_db_host: $('#search_db_host').val(), search_db_port: $('#search_db_port').val(), search_db_user: $('#search_db_user').val() },
               		response);
   				},
                 minLength: 3,

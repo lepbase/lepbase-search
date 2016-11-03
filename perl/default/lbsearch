@@ -8,16 +8,16 @@ use DBD::mysql;
 use JSON;
 use List::Util 1.33 'any';
 
+my $cgi = CGI->new();
 
 # Set database variables
 my $platform = "mysql";
-my $database = "lepbase_search_32_85_1";
-my $host = "mysql.lepbase.org";
-my $port = "3307";
-my $user = "anonymous";
+my $database = $cgi->param('search_db_name');
+my $host = $cgi->param('search_db_host');
+my $port = $cgi->param('search_db_port');
+my $user = $cgi->param('search_db_user');
 
 # write CGI header
-my $cgi = CGI->new();
 print $cgi->header('application/json');
 
 # Connect to database
@@ -26,7 +26,6 @@ my $dbh = DBI->connect($dsn, $user);
 
 # search terms
 my $term = $cgi->param('term');
-print STDERR $term,"\n";
 my $tablename = $cgi->param('table') || 'multi';
 my $page_size = $cgi->param('page_size') || 10;
 my $feature_type = $cgi->param('feature_type') || undef;
